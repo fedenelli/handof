@@ -1,5 +1,4 @@
-# handof
-[Handof](https://browsee.io/blog/)
+# handof ([Handof](https://browsee.io/blog/open-source-script-monitoring-mongodb-cassandra-services-in-your-stack/))
 A simple script to monitor any process.
 
 ### Prerequisites
