@@ -8,6 +8,7 @@ var argv = require('minimist')(process.argv.slice(2));
 const OPERATIONS = {
   CHECK_MONGO: 1,
   CHECK_CASSANDRA: 2,
+  CHECK_REDIS_MEMORY: 3,
 };
 
 chooseOperations = function() {
@@ -18,6 +19,9 @@ chooseOperations = function() {
   }
   if (argv['checkCassandra']) {
     operations.push(OPERATIONS.CHECK_CASSANDRA);
+  }
+  if (argv['checkRedisMemory']) {
+    operations.push(OPERATIONS.CHECK_REDIS_MEMORY);
   }
   return operations;
 };
@@ -39,6 +43,10 @@ chooseOperations = function() {
       processes.checkMongo(cb);
     } else if (op === OPERATIONS.CHECK_CASSANDRA) {
       processes.checkCassandra(cb);
+    } else if (op === OPERATIONS.CHECK_REDIS_MEMORY) {
+      var memory = parseInt(argv['checkRedisMemory']);
+      var auth = argv['redisAuth'];
+      processes.checkRedisMemory(memory, auth, cb);
     }
   }, callback);
 })();
