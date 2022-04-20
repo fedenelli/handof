@@ -9,6 +9,7 @@ const OPERATIONS = {
   CHECK_MONGO: 1,
   CHECK_CASSANDRA: 2,
   CHECK_REDIS_MEMORY: 3,
+  CHECK_SCYLLA: 4,
 };
 
 chooseOperations = function() {
@@ -19,6 +20,9 @@ chooseOperations = function() {
   }
   if (argv['checkCassandra']) {
     operations.push(OPERATIONS.CHECK_CASSANDRA);
+  }
+  if (argv['checkScylla']) {
+    operations.push(OPERATIONS.CHECK_SCYLLA);
   }
   if (argv['checkRedisMemory']) {
     operations.push(OPERATIONS.CHECK_REDIS_MEMORY);
@@ -43,6 +47,8 @@ chooseOperations = function() {
       processes.checkMongo(cb);
     } else if (op === OPERATIONS.CHECK_CASSANDRA) {
       processes.checkCassandra(cb);
+    } else if (op === OPERATIONS.CHECK_SCYLLA) {
+      processes.checkScylla(cb);
     } else if (op === OPERATIONS.CHECK_REDIS_MEMORY) {
       var memory = parseInt(argv['checkRedisMemory']);
       var auth = argv['redisAuth'];
