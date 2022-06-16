@@ -11,6 +11,7 @@ const OPERATIONS = {
   CHECK_REDIS_MEMORY: 3,
   CHECK_SCYLLA: 4,
   CHECK_ELASTICSEARCH: 5,
+  CHECK_DISK: 6,
 };
 
 chooseOperations = function() {
@@ -30,6 +31,9 @@ chooseOperations = function() {
   }
   if (argv['checkRedisMemory']) {
     operations.push(OPERATIONS.CHECK_REDIS_MEMORY);
+  }
+  if (argv['checkDisk']) {
+    operations.push(OPERATIONS.CHECK_DISK);
   }
   return operations;
 };
@@ -59,6 +63,10 @@ chooseOperations = function() {
       var memory = parseInt(argv['checkRedisMemory']);
       var auth = argv['redisAuth'];
       processes.checkRedisMemory(memory, auth, cb);
+    } else if (op === OPERATIONS.CHECK_DISK) {
+      var percent = parseInt(argv['percent']);
+      var path = argv['checkDisk'];
+      processes.checkDisk(path, percent, cb);
     }
   }, callback);
 })();
