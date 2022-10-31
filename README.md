@@ -26,3 +26,12 @@ To monitor MongoDB, add the following cron to the machine hosting MongoDB.
 Similary for Cassandra you could do
 
 */2 * * * * handof --checkCassandra
+
+
+`
+node ~/handof/bin/handof.js --checkMongo
+`
+
+`
+node ~/handof/bin/handof.js --checkDisk
+`
