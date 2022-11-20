@@ -13,4 +13,5 @@ C.config = {
   webhookUrl: '',
   diskAlertMessage: '',
   mongoAlertMessage: '', 
+  restartServices: true,
 };

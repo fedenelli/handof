@@ -27,11 +27,11 @@ Similary for Cassandra you could do
 
 */2 * * * * handof --checkCassandra
 
+`
+git clone https://github.com/fedenelli/handof.git && cd handof && npm install && nano config.js
+`
 
 `
-node ~/handof/bin/handof.js --checkMongo
-`
-
-`
-node ~/handof/bin/handof.js --checkDisk
+*/5 * * * * node ~/handof/bin/handof.js --checkMongo
+0 */6 * * * node ~/handof/bin/handof.js --checkDisk
 `
